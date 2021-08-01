@@ -29,6 +29,7 @@ const SignUpForm = () => {
   }
 
   const handleButtonClick = () => {
+    localStorage.setItem("@USERNAME", userName);
     history.push('/main');
   }
 
