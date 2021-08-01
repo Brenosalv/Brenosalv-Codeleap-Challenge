@@ -1,12 +1,14 @@
-import { FC } from "react";
-import Form from "../components/Form";
+import { FC  } from "react";
+import SignUpForm from "../components/Form/SignUpForm";
 import GlobalStyle from "../globalStyles";
 
-export const SignUp: FC = () => {
+const SignUp: FC = () => {
   return (
     <>
       <GlobalStyle />
-      <Form />
+      <SignUpForm />
     </>
   );
 }
+
+export default SignUp;
