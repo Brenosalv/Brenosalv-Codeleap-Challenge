@@ -4,23 +4,31 @@ import {
   useContext,
   useState
 } from 'react';
+import styled from "styled-components";
+import axios from 'axios';
+
 import {
   Title,
   Button,
-  PostFormContainer,
   Input,
   Label,
-  TextArea
-} from './Form.elements';
+  TextArea,
+  Form
+} from './sharedElements';
 
 import {
   savePostsInfo,
   USER_KEY
-} from '../../services/auth';
-import { PostsContext } from '../../contexts/PostsContext';
-import axios from 'axios';
+} from '../services/auth';
+import { PostsContext } from '../contexts/PostsContext';
 
-const Post: FC = () => {
+const PostFormContainer = styled(Form)`
+  width: 100%;
+  height: 349px;
+  margin-bottom: 35px;
+`;
+
+const PostForm: FC = () => {
   const userName = localStorage.getItem(USER_KEY);
 
   const { allPosts, setNewPost } = useContext(PostsContext);
@@ -81,4 +89,4 @@ const Post: FC = () => {
   );
 }
 
-export default Post;
+export default PostForm;

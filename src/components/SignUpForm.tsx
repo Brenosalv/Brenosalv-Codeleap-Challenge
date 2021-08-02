@@ -1,13 +1,26 @@
+import { ChangeEvent, useState } from "react";
+import { useHistory } from "react-router";
+import styled from "styled-components";
+
 import {
   Title,
   Button,
   Input,
   Label,
-  SignUpFormContainer
-} from "./Form.elements";
-import { ChangeEvent, useState } from "react";
-import { useHistory } from "react-router";
-import { USER_KEY } from "../../services/auth";
+  Form
+} from "./sharedElements";
+
+import { USER_KEY } from "../services/auth";
+
+const SignUpFormContainer = styled(Form)`
+  width: 500px;
+  height: 220px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -250px;
+  margin-top: -110px;
+`;
 
 const SignUpForm = () => {
   const history = useHistory();

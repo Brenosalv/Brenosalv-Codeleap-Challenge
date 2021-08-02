@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 37px;
+  width: 100%;
+  height: 80px;
+  background-color: #000000;
+`;
+
 export const Form = styled.form`
   background: #FFFFFF;
   border: 1px solid #CCCCCC;
@@ -15,22 +25,6 @@ export const Title = styled.h1`
   text-align: left;
   color: ${props => props.color};
   margin: ${(props: {margin?: string})=> props.margin ? props.margin : 0}px;
-`;
-
-export const PostFormContainer = styled(Form)`
-  width: 100%;
-  height: 349px;
-  margin-bottom: 35px;
-`;
-
-export const SignUpFormContainer = styled(Form)`
-  width: 500px;
-  height: 220px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -250px;
-  margin-top: -110px;
 `;
 
 export const Label = styled.h6`
@@ -93,4 +87,22 @@ export const Button = styled.button`
   :active {
     transform: scale(0.95);
   }
+`;
+
+export const UserName = styled.h6`
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  float: left;
+`;
+
+export const DateTime = styled.h6`
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  float: right;
 `;

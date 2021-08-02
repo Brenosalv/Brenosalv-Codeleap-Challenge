@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Feed from "../components/Feed/Feed";
+import Feed from "../components/Feed";
 import GlobalStyle from "../globalStyles";
 
 const Main: FC = () => {

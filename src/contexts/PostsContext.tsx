@@ -6,11 +6,11 @@ import {
   Dispatch,
   useEffect,
 } from "react";
+import axios from "axios";
 
 import { PostProps } from "../types/interfaces";
 
 import { POSTS_KEY, savePostsInfo } from '../services/auth';
-import axios from "axios";
 
 interface PostsContextData {
   allPosts: PostProps[];

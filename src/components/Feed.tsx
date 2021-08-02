@@ -1,23 +1,34 @@
 import { FC, useContext } from "react";
-import PostForm from "../Form/PostForm";
-import { Title } from "../Form/Form.elements";
-import CodeLeapPost from "./CodeLeapPost";
-import {
-  FeedContainer,
-  FeedHeader,
-  FeedMain
-} from "./Feed.elements";
+import styled from "styled-components";
 
-import { PostsContext } from "../../contexts/PostsContext";
+import PostForm from "./PostForm";
+import CodeLeapPost from "./CodeLeapPost";
+import { Header, Title } from "./sharedElements";
+
+import { PostsContext } from "../contexts/PostsContext";
+
+const FeedContainer = styled.div`
+  width: 800px;
+  height: 100%;
+  margin: auto;
+  background-color: #FFFFFF;
+`;
+
+const FeedMain = styled.main`
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  padding: 44px 38px;
+`;
 
 const Feed: FC = () => {
   const { allPosts } = useContext(PostsContext);
 
   return (
     <FeedContainer>
-      <FeedHeader>
+      <Header>
         <Title color="#FFFFFF">CodeLeap Network</Title>
-      </FeedHeader>
+      </Header>
 
       <FeedMain>
         <PostForm />

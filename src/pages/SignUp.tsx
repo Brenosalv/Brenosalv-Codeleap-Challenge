@@ -1,5 +1,5 @@
 import { FC  } from "react";
-import SignUpForm from "../components/Form/SignUpForm";
+import SignUpForm from "../components/SignUpForm";
 import GlobalStyle from "../globalStyles";
 
 const SignUp: FC = () => {
