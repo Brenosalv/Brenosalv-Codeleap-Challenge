@@ -4,7 +4,6 @@ import {
   useContext,
   useState
 } from 'react';
-import styled from "styled-components";
 import axios from 'axios';
 
 import {
@@ -13,7 +12,7 @@ import {
   Input,
   Label,
   TextArea,
-  Form
+  FeedFormContainer
 } from './sharedElements';
 
 import {
@@ -21,12 +20,6 @@ import {
   USER_KEY
 } from '../services/auth';
 import { PostsContext } from '../contexts/PostsContext';
-
-const PostFormContainer = styled(Form)`
-  width: 100%;
-  height: 349px;
-  margin-bottom: 35px;
-`;
 
 const PostForm: FC = () => {
   const userName = localStorage.getItem(USER_KEY);
@@ -65,7 +58,7 @@ const PostForm: FC = () => {
   }
 
   return (
-    <PostFormContainer onSubmit={handlePostSubmission}>
+    <FeedFormContainer onSubmit={handlePostSubmission}>
       <Title margin="0 0 30px 0">What's on your mind?</Title>
 
       <Label>Title</Label>
@@ -85,7 +78,7 @@ const PostForm: FC = () => {
       />
 
       <Button type="submit" disabled={!title || !content}>CREATE</Button>
-    </PostFormContainer>
+    </FeedFormContainer>
   );
 }
 

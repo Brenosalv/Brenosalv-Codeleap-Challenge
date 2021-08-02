@@ -8,25 +8,19 @@ import styled from "styled-components";
 
 import { PostsContext } from "../contexts/PostsContext";
 
-import { Button, Title } from "./sharedElements";
+import {
+  Button,
+  Title,
+  Modal,
+  ButtonsContainer,
+  CancelButton
+} from "./sharedElements";
 
-const Modal = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(119, 119, 119, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Alert = styled.form`
+const AlertContainer = styled.form`
   background: #FFFFFF;
   width: 661px;
   height: 168px;
-  padding: 34px 49px;
+  padding: 25px 34px;
   display: flex;
   flex-direction: column;
 `;
@@ -35,25 +29,18 @@ const AlertTitle = styled(Title)`
   font-weight: 400;
 `;
 
-const AlertButton = styled(Button)`
+const ConfirmButton = styled(Button)`
   background: #FFFFFF;
   color: #000000;
   border: 1px solid #000000;
 `;
 
-const AlertButtonsContainer = styled.div`
-  display: flex;
-  gap: 16px;
-  margin-top: auto;
-  margin-left: auto;
-`;
-
-interface DeleteBoxProps {
+interface DeleteAlertProps {
   setOpenDeleteAlert: Dispatch<React.SetStateAction<boolean>>;
   postId: number;
 }
 
-const DeleteBox: FC<DeleteBoxProps> = (props) => {
+const DeleteBox: FC<DeleteAlertProps> = (props) => {
   const { setPostDeleted } = useContext(PostsContext);
 
   const handleCancelButtonClick = () => {
@@ -69,16 +56,16 @@ const DeleteBox: FC<DeleteBoxProps> = (props) => {
 
   return (
     <Modal>
-      <Alert onSubmit={handlePostDelete}>
+      <AlertContainer onSubmit={handlePostDelete}>
         <AlertTitle>
           Are you sure you want to delete this item?
         </AlertTitle>
 
-        <AlertButtonsContainer>
-          <AlertButton onClick={handleCancelButtonClick}>Cancel</AlertButton>
-          <AlertButton type="submit">OK</AlertButton>
-        </AlertButtonsContainer>
-      </Alert>
+        <ButtonsContainer>
+          <CancelButton onClick={handleCancelButtonClick}>Cancel</CancelButton>
+          <ConfirmButton type="submit">OK</ConfirmButton>
+        </ButtonsContainer>
+      </AlertContainer>
     </Modal>
   );
 }

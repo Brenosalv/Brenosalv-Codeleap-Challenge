@@ -16,6 +16,12 @@ export const Form = styled.form`
   padding: 28px 32px;
 `;
 
+export const FeedFormContainer = styled(Form)`
+  width: 723px;
+  height: 349px;
+  margin-bottom: 35px;
+`;
+
 export const Title = styled.h1`
   font-size: 22px;
   font-style: normal;
@@ -24,7 +30,7 @@ export const Title = styled.h1`
   letter-spacing: 0em;
   text-align: left;
   color: ${props => props.color};
-  margin: ${(props: {margin?: string})=> props.margin ? props.margin : 0}px;
+  margin: ${(props: { margin?: string }) => props.margin ? props.margin : 0}px;
 `;
 
 export const Label = styled.h6`
@@ -45,7 +51,7 @@ export const Input = styled.input`
   display: flex;
   align-items: center;
   justify-content: left;
-  margin: ${(props: {margin: string})=> props.margin};
+  margin: ${(props: { margin: string }) => props.margin};
   ::placeholder {
     color: #CCCCCC;
   }
@@ -61,10 +67,18 @@ export const TextArea = styled.textarea`
   align-items: center;
   justify-content: left;
   resize: none;
-  margin: ${(props: {margin: string})=> props.margin}px;
+  margin: ${(props: { margin: string }) => props.margin}px;
   ::placeholder {
     color: #CCCCCC;
   }
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 16px;
+  margin-top: auto;
+  margin-left: auto;
+  float: right;
 `;
 
 export const Button = styled.button`
@@ -89,6 +103,12 @@ export const Button = styled.button`
   }
 `;
 
+export const CancelButton = styled(Button)`
+  background: #FFFFFF;
+  color: #000000;
+  border: 1px solid #000000;
+`;
+
 export const UserName = styled.h6`
   font-size: 18px;
   font-style: normal;
@@ -105,4 +125,16 @@ export const DateTime = styled.h6`
   line-height: 21px;
   letter-spacing: 0em;
   float: right;
+`;
+
+export const Modal = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(119, 119, 119, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

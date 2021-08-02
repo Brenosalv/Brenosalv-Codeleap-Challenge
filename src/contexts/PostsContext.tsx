@@ -17,6 +17,7 @@ interface PostsContextData {
   setAllPosts: Dispatch<SetStateAction<PostProps[]>>;
   setNewPost: Dispatch<SetStateAction<boolean>>;
   setPostDeleted: Dispatch<SetStateAction<boolean>>;
+  setPostEdited: Dispatch<SetStateAction<boolean>>;
 }
 
 interface PostsContextProviderProps {
@@ -29,6 +30,7 @@ export const PostsContextProvider = (props: PostsContextProviderProps) => {
   const [allPosts, setAllPosts] = useState<PostProps[]>(JSON.parse(localStorage.getItem(POSTS_KEY)!));
   const [newPost, setNewPost] = useState(false);
   const [postDeleted, setPostDeleted] = useState(false);
+  const [postEdited, setPostEdited] = useState(false);
 
   useEffect(() => {
     axios.get("https://dev.codeleap.co.uk/careers/")
@@ -42,7 +44,8 @@ export const PostsContextProvider = (props: PostsContextProviderProps) => {
 
     setNewPost(false);
     setPostDeleted(false);
-  }, [newPost, postDeleted]);
+    setPostEdited(false);
+  }, [newPost, postDeleted, postEdited]);
 
   return (
     <PostsContext.Provider
@@ -50,7 +53,8 @@ export const PostsContextProvider = (props: PostsContextProviderProps) => {
         allPosts,
         setAllPosts,
         setNewPost,
-        setPostDeleted
+        setPostDeleted,
+        setPostEdited
       }}>
       {props.children}
     </PostsContext.Provider>

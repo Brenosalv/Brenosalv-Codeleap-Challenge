@@ -3,6 +3,7 @@ import TimeAgo from 'react-timeago';
 import styled from "styled-components";
 
 import DeleteAlert from "./DeleteAlert";
+import { EditAlert } from "./EditAlert";
 import {
   Title,
   UserName,
@@ -72,9 +73,14 @@ const CodeLeapPost: FC<PostProps> = (props) => {
   const loggedUserName = localStorage.getItem(USER_KEY);
 
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
+  const [openEditAlert, setOpenEditAlert] = useState(false);
 
   const handleDeleteButtonClick = () => {
     setOpenDeleteAlert(true);
+  }
+
+  const handleEditButtonClick = () => {
+    setOpenEditAlert(true);
   }
 
   return (
@@ -92,6 +98,7 @@ const CodeLeapPost: FC<PostProps> = (props) => {
             <img
               src="edit.svg"
               alt="Edit"
+              onClick={handleEditButtonClick}
             />
           </PostOptions>
         )}
@@ -110,6 +117,13 @@ const CodeLeapPost: FC<PostProps> = (props) => {
       {openDeleteAlert && (
         <DeleteAlert
           setOpenDeleteAlert={setOpenDeleteAlert}
+          postId={props.id}
+        />
+      )}
+
+      {openEditAlert && (
+        <EditAlert
+          setOpenEditAlert={setOpenEditAlert}
           postId={props.id}
         />
       )}
