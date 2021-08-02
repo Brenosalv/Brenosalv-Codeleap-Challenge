@@ -1,8 +1,12 @@
 import { FC, useContext } from "react";
 import PostForm from "../Form/PostForm";
-import { Title } from "../Shared.elements";
+import { Title } from "../Form/Form.elements";
 import CodeLeapPost from "./CodeLeapPost";
-import { FeedContainer, FeedHeader, FeedMain } from "./Feed.elements";
+import {
+  FeedContainer,
+  FeedHeader,
+  FeedMain
+} from "./Feed.elements";
 
 import { PostsContext } from "../../contexts/PostsContext";
 

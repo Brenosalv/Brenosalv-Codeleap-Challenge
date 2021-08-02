@@ -1,7 +1,11 @@
-import { ChangeEvent, FC, useContext, useState } from 'react';
-import { PostProps } from '../../types/interfaces';
-import { Title } from '../Shared.elements';
 import {
+  ChangeEvent,
+  FC,
+  useContext,
+  useState
+} from 'react';
+import {
+  Title,
   Button,
   PostFormContainer,
   Input,
@@ -17,10 +21,9 @@ import { PostsContext } from '../../contexts/PostsContext';
 import axios from 'axios';
 
 const Post: FC = () => {
-  const currentDateTime = new Date(); // implement difference between now and post creation date time
   const userName = localStorage.getItem(USER_KEY);
 
-  const { allPosts } = useContext(PostsContext);
+  const { allPosts, setNewPost } = useContext(PostsContext);
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -33,19 +36,20 @@ const Post: FC = () => {
     setContent(event.target.value);
   }
 
-  const handlePostSubmission = () => {
-    const newPost: PostProps = {
-      id: allPosts ? allPosts.length + 1 : 1,
+  const handlePostSubmission = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+
+    const newPost = {
       username: userName!,
       title: title,
       content: content,
-      created_datetime: currentDateTime,
     }
 
     axios.post("https://dev.codeleap.co.uk/careers/", newPost)
       .then(response => {
         console.log(response.status);
         savePostsInfo(JSON.stringify([...allPosts, newPost]));
+        setNewPost(true);
       })
       .catch(error => {
         console.error(error);

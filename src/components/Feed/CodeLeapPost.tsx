@@ -1,5 +1,6 @@
-import { FC } from "react";
-import { Title } from "../Shared.elements";
+import { FC, useState } from "react";
+import { Title } from '../Form/Form.elements';
+import DeleteAlert from "./DeleteAlert";
 import {
   PostContentHeader,
   PostHeader,
@@ -19,6 +20,12 @@ import { USER_KEY } from "../../services/auth";
 const CodeLeapPost: FC<PostProps> = (props) => {
   const loggedUserName = localStorage.getItem(USER_KEY);
 
+  const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
+
+  const handleDeleteButtonClick = () => {
+    setOpenDeleteAlert(true);
+  }
+
   return (
     <PostContainer>
       <PostHeader>
@@ -26,14 +33,21 @@ const CodeLeapPost: FC<PostProps> = (props) => {
 
         {props.username === loggedUserName && (
           <PostOptions>
-            <img src="delete.svg" alt="Delete" />
-            <img src="edit.svg" alt="Edit" />
+            <img
+              src="delete.svg"
+              alt="Delete"
+              onClick={handleDeleteButtonClick}
+            />
+            <img
+              src="edit.svg"
+              alt="Edit"
+            />
           </PostOptions>
         )}
       </PostHeader>
       <PostMain>
         <PostContentHeader>
-          <UserName>{props.username}</UserName>
+          <UserName>@{props.username}</UserName>
           <DateTime><TimeAgo date={props.created_datetime} /></DateTime>
         </PostContentHeader>
 
@@ -41,6 +55,13 @@ const CodeLeapPost: FC<PostProps> = (props) => {
           {props.content}
         </PostContentMain>
       </PostMain>
+
+      {openDeleteAlert && (
+        <DeleteAlert
+          setOpenDeleteAlert={setOpenDeleteAlert}
+          postId={props.id}
+        />
+      )}
     </PostContainer>
   );
 }

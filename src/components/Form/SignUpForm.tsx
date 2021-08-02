@@ -1,12 +1,12 @@
 import {
+  Title,
   Button,
   Input,
   Label,
-  SignUpFormContainer,
+  SignUpFormContainer
 } from "./Form.elements";
 import { ChangeEvent, useState } from "react";
 import { useHistory } from "react-router";
-import { Title } from "../Shared.elements";
 import { USER_KEY } from "../../services/auth";
 
 const SignUpForm = () => {
