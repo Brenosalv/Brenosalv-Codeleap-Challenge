@@ -1,18 +1,34 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import PostForm from "../Form/PostForm";
 import { Title } from "../Shared.elements";
-import { Container, Header, Main } from "./Feed.elements";
+import CodeLeapPost from "./CodeLeapPost";
+import { FeedContainer, FeedHeader, FeedMain } from "./Feed.elements";
+
+import { PostsContext } from "../../contexts/PostsContext";
 
 const Feed: FC = () => {
+  const { allPosts } = useContext(PostsContext);
+
   return (
-    <Container>
-      <Header>
-        <Title margin="0" color="#FFFFFF">CodeLeap Network</Title>
-      </Header>
-      <Main>
+    <FeedContainer>
+      <FeedHeader>
+        <Title color="#FFFFFF">CodeLeap Network</Title>
+      </FeedHeader>
+
+      <FeedMain>
         <PostForm />
-      </Main>
-    </Container>
+
+        {allPosts.map(post => (
+          <CodeLeapPost
+            id={post.id}
+            username={post.username}
+            title={post.title}
+            content={post.content}
+            created_datetime={post.created_datetime}
+          />
+        ))}
+      </FeedMain>
+    </FeedContainer>
   );
 }
 

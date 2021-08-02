@@ -6,6 +6,22 @@ export const Form = styled.form`
   padding: 28px 32px;
 `;
 
+export const PostFormContainer = styled(Form)`
+  width: 100%;
+  height: 349px;
+  margin-bottom: 35px;
+`;
+
+export const SignUpFormContainer = styled(Form)`
+  width: 500px;
+  height: 220px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -250px;
+  margin-top: -110px;
+`;
+
 export const Label = styled.h6`
   font-size: 16px;
   font-style: normal;

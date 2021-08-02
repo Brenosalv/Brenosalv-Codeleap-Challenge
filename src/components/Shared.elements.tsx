@@ -8,5 +8,5 @@ export const Title = styled.h1`
   letter-spacing: 0em;
   text-align: left;
   color: ${props => props.color};
-  margin: ${(props: {margin: string})=> props.margin}px;
+  margin: ${(props: {margin?: string})=> props.margin ? props.margin : 0}px;
 `;

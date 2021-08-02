@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import Routes from './routes';
 
 import reportWebVitals from './reportWebVitals';
+import { PostsContextProvider } from './contexts/PostsContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routes />
+    <PostsContextProvider>
+      <Routes />
+    </PostsContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
