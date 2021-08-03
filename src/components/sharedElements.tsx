@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from './responsiveness';
 
 export const Header = styled.header`
   display: flex;
@@ -18,42 +19,90 @@ export const Form = styled.form`
 
 export const FeedFormContainer = styled(Form)`
   width: 723px;
-  height: 349px;
   margin-bottom: 35px;
+
+  @media ${device.mobileS} {
+    height: 416px;
+    font-size: 32px;
+    line-height: 30px;
+  }
+
+  @media ${device.tablet} {
+    height: 349px;
+    font-size: 22px;
+    line-height: 26px;
+  }
 `;
 
 export const Title = styled.h1`
-  font-size: 22px;
   font-style: normal;
   font-weight: 700;
-  line-height: 26px;
   letter-spacing: 0em;
   text-align: left;
   color: ${props => props.color};
   margin: ${(props: { margin?: string }) => props.margin ? props.margin : 0}px;
+
+  @media ${device.mobileS} {
+    font-size: 32px;
+    line-height: 30px;
+  }
+
+  @media ${device.tablet} {
+    font-size: 22px;
+    line-height: 26px;
+  }
 `;
 
 export const Label = styled.h6`
-  font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 19px;
   letter-spacing: 0em;
   text-align: left;
+
+  @media ${device.mobileS} {
+    font-size: 26px;
+    line-height: 29px;
+  }
+
+  @media ${device.tablet} {
+    font-size: 16px;
+    line-height: 19px;
+  }
 `;
 
 export const Input = styled.input`
   border: 1px solid #777777;
   border-radius: 4px;
   width: 100%;
-  height: 28px;
   padding: 6px 11px;
   display: flex;
   align-items: center;
   justify-content: left;
   margin: ${(props: { margin: string }) => props.margin};
+  font-style: normal;
+  font-weight: normal;
+  line-height: 16px;
   ::placeholder {
+    font-style: normal;
+    font-weight: normal;
+    line-height: 16px;
     color: #CCCCCC;
+  }
+
+  @media ${device.mobileS} {
+    height: 38px;
+    font-size: 22px;
+    ::placeholder {
+      font-size: 22px;
+    }
+  }
+
+  @media ${device.tablet} {
+    height: 28px;
+    font-size: 14px;
+    ::placeholder {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -68,8 +117,29 @@ export const TextArea = styled.textarea`
   justify-content: left;
   resize: none;
   margin: ${(props: { margin: string }) => props.margin}px;
+  font-style: normal;
+  font-weight: normal;
   ::placeholder {
+    font-style: normal;
+    font-weight: normal;
     color: #CCCCCC;
+  }
+
+  @media ${device.mobileS} {
+    font-size: 22px;
+    line-height: 26px;
+    ::placeholder {
+      font-size: 22px;
+      line-height: 26px;
+    }
+  }
+
+  @media ${device.tablet} {
+    font-size: 14px;
+    line-height: 16px;
+    ::placeholder {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -84,15 +154,10 @@ export const ButtonsContainer = styled.div`
 export const Button = styled.button`
   background: #000000;
   color: #FFFFFF;
-  width: 111px;
-  height: 33px;
   border: none;
   float: right;
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
-  font-size: 16px;
-  line-height: 19px;
   cursor: pointer;
   :disabled {
     background: grey;
@@ -101,30 +166,24 @@ export const Button = styled.button`
   :active {
     transform: scale(0.95);
   }
+
+  @media ${device.mobileS} {
+    width: 200px;
+    height: 60px;
+    font-size: 24px;
+  }
+
+  @media ${device.tablet} {
+    width: 111px;
+    height: 33px;
+    font-size: 16px;
+  }
 `;
 
 export const CancelButton = styled(Button)`
   background: #FFFFFF;
   color: #000000;
   border: 1px solid #000000;
-`;
-
-export const UserName = styled.h6`
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 21px;
-  letter-spacing: 0em;
-  float: left;
-`;
-
-export const DateTime = styled.h6`
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 21px;
-  letter-spacing: 0em;
-  float: right;
 `;
 
 export const Modal = styled.div`

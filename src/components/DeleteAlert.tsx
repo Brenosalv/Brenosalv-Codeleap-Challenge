@@ -15,14 +15,23 @@ import {
   ButtonsContainer,
   CancelButton
 } from "./sharedElements";
+import { device } from "./responsiveness";
 
 const AlertContainer = styled.form`
   background: #FFFFFF;
   width: 661px;
-  height: 168px;
-  padding: 25px 34px;
   display: flex;
   flex-direction: column;
+
+  @media ${device.mobileS} {
+    padding: 35px 34px;
+    height: 240px;
+  }
+
+  @media ${device.tablet} {
+    padding: 25px 34px;
+    height: 168px;
+  }
 `;
 
 const AlertTitle = styled(Title)`

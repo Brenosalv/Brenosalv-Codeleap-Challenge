@@ -4,20 +4,17 @@ import styled from "styled-components";
 
 import DeleteAlert from "./DeleteAlert";
 import { EditAlert } from "./EditAlert";
-import {
-  Title,
-  UserName,
-  DateTime,
-  Header
-} from "./sharedElements";
+import { Title, Header } from "./sharedElements";
 
 import { PostProps } from "../types/interfaces";
 
 import { USER_KEY } from "../services/auth";
+import { device } from "./responsiveness";
 
 const PostContainer = styled.div`
   width: 100%;
-  height: 328px;
+  min-height: 328px;
+  height: fit-content;
   background-color: #FFFFFF;
   border: 1px solid #999999;
   box-sizing: border-box;
@@ -36,9 +33,19 @@ const PostHeader = styled(Header)`
 const PostOptions = styled.div`
   img {
     cursor: pointer;
-    :active {
-    transform: scale(0.85);
-  }
+
+    @media ${device.mobileS} {
+      width: 38px;
+      height: 38px;
+    }
+
+    @media ${device.tablet} {
+      width: 30px;
+      height: 30px;
+      :active {
+        transform: scale(0.85);
+      }
+    }
   }
 
   img:nth-child(2) {
@@ -63,10 +70,40 @@ const PostContentHeader = styled.header`
 const PostContentMain = styled.h2`
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
-  line-height: 21px;
   color: #000000;
   float: left;
+  
+  @media ${device.mobileS} {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  @media ${device.tablet} {
+    font-size: 18px;
+    line-height: 21px;
+  }
+`;
+
+const UserName = styled.h6`
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0em;
+  float: left;
+
+  @media ${device.mobileS} {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  @media ${device.tablet} {
+    font-size: 18px;
+    line-height: 21px;
+  }
+`;
+
+const DateTime = styled(UserName)`
+  font-weight: 400;
+  float: right;
 `;
 
 const CodeLeapPost: FC<PostProps> = (props) => {
@@ -95,6 +132,7 @@ const CodeLeapPost: FC<PostProps> = (props) => {
               alt="Delete"
               onClick={handleDeleteButtonClick}
             />
+
             <img
               src="edit.svg"
               alt="Edit"
