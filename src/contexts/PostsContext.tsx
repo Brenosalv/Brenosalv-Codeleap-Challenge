@@ -18,6 +18,7 @@ interface PostsContextData {
   setNewPost: Dispatch<SetStateAction<boolean>>;
   setPostDeleted: Dispatch<SetStateAction<boolean>>;
   setPostEdited: Dispatch<SetStateAction<boolean>>;
+  setPostsCount: Dispatch<SetStateAction<number>>;
 }
 
 interface PostsContextProviderProps {
@@ -31,9 +32,10 @@ export const PostsContextProvider = (props: PostsContextProviderProps) => {
   const [newPost, setNewPost] = useState(false);
   const [postDeleted, setPostDeleted] = useState(false);
   const [postEdited, setPostEdited] = useState(false);
+  const [postsCount, setPostsCount] = useState(10);
 
   useEffect(() => {
-    axios.get("https://dev.codeleap.co.uk/careers/")
+    axios.get(`https://dev.codeleap.co.uk/careers/?limit=${postsCount}`)
       .then(response => {
         setAllPosts(response.data.results);
         savePostsInfo(JSON.stringify(response.data.results));
@@ -45,7 +47,7 @@ export const PostsContextProvider = (props: PostsContextProviderProps) => {
     setNewPost(false);
     setPostDeleted(false);
     setPostEdited(false);
-  }, [newPost, postDeleted, postEdited]);
+  }, [newPost, postDeleted, postEdited, postsCount]);
 
   return (
     <PostsContext.Provider
@@ -54,7 +56,8 @@ export const PostsContextProvider = (props: PostsContextProviderProps) => {
         setAllPosts,
         setNewPost,
         setPostDeleted,
-        setPostEdited
+        setPostEdited,
+        setPostsCount
       }}>
       {props.children}
     </PostsContext.Provider>

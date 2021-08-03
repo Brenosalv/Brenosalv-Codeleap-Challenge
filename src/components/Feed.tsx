@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import PostForm from "./PostForm";
@@ -22,10 +22,17 @@ const FeedMain = styled.main`
 `;
 
 const Feed: FC = () => {
-  const { allPosts } = useContext(PostsContext);
+  const { allPosts, setPostsCount } = useContext(PostsContext);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  window.document.body.onscroll = (event) => {
+    if (containerRef.current!.getBoundingClientRect().bottom <= window.innerHeight)
+      setPostsCount(postsCount => postsCount + 1);
+  }
 
   return (
-    <FeedContainer>
+    <FeedContainer ref={containerRef}>
       <Header>
         <Title color="#FFFFFF">CodeLeap Network</Title>
       </Header>
