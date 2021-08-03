@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   ChangeEvent,
   Dispatch,
@@ -6,7 +5,8 @@ import {
   useContext,
   useState
 } from 'react';
-import { PostsContext } from '../contexts/PostsContext';
+import axios from 'axios';
+
 import {
   Title,
   Label,
@@ -18,6 +18,8 @@ import {
   ButtonsContainer,
   CancelButton
 } from './sharedElements';
+
+import { PostsContext } from '../contexts/PostsContext';
 
 interface EditAlertProps {
   setOpenEditAlert: Dispatch<React.SetStateAction<boolean>>;

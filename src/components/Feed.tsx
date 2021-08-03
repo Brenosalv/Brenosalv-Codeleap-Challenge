@@ -1,8 +1,12 @@
-import { FC, useContext, useEffect, useRef } from "react";
+import {
+  FC,
+  useContext,
+  useRef
+} from "react";
 import styled from "styled-components";
 
 import PostForm from "./PostForm";
-import CodeLeapPost from "./CodeLeapPost";
+import { Post } from "./Post";
 import { Header, Title } from "./sharedElements";
 
 import { PostsContext } from "../contexts/PostsContext";
@@ -41,7 +45,7 @@ const Feed: FC = () => {
         <PostForm />
 
         {allPosts.map(post => (
-          <CodeLeapPost
+          <Post
             id={post.id}
             username={post.username}
             title={post.title}

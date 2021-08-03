@@ -15,6 +15,7 @@ import {
   ButtonsContainer,
   CancelButton
 } from "./sharedElements";
+
 import { device } from "./responsiveness";
 
 const AlertContainer = styled.form`

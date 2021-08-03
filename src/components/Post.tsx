@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import TimeAgo from 'react-timeago';
+import TimeAgo from "react-timeago";
 import styled from "styled-components";
 
 import DeleteAlert from "./DeleteAlert";
@@ -7,7 +7,6 @@ import { EditAlert } from "./EditAlert";
 import { Title, Header } from "./sharedElements";
 
 import { PostProps } from "../types/interfaces";
-
 import { USER_KEY } from "../services/auth";
 import { device } from "./responsiveness";
 
@@ -106,7 +105,7 @@ const DateTime = styled(UserName)`
   float: right;
 `;
 
-const CodeLeapPost: FC<PostProps> = (props) => {
+export const Post: FC<PostProps> = (props) => {
   const loggedUserName = localStorage.getItem(USER_KEY);
 
   const [openDeleteAlert, setOpenDeleteAlert] = useState(false);
@@ -168,5 +167,3 @@ const CodeLeapPost: FC<PostProps> = (props) => {
     </PostContainer>
   );
 }
-
-export default CodeLeapPost;

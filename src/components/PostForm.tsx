@@ -15,10 +15,7 @@ import {
   FeedFormContainer
 } from './sharedElements';
 
-import {
-  savePostsInfo,
-  USER_KEY
-} from '../services/auth';
+import { savePostsInfo, USER_KEY } from '../services/auth';
 import { PostsContext } from '../contexts/PostsContext';
 
 const PostForm: FC = () => {
@@ -55,6 +52,9 @@ const PostForm: FC = () => {
       .catch(error => {
         console.error(error);
       });
+
+    setTitle("");
+    setContent("");
   }
 
   return (
